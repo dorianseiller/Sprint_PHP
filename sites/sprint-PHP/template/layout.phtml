@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akinator</title>
+    <link rel="stylesheet" href="assets/styles/app.css">
+</head>
+<body>
+    <header>
+        <a href="index.php">Akinator</a>
+        <nav>
+            <?php if (isAuthenticated()) : ?>
+                <a href="account.php">Mon Profil</a>
+                <a href="logout.php">Déconnexion</a>
+            <?php else : ?>
+                <a href="login.php">Connexion</a>
+                <a href="signup.php">Inscription</a>
+            <?php endif; ?>
+        </nav>
+    </header>
+
+    <main>
+        <?php include_once $template; ?>
+    </main>
+
+    <footer>
+        © 2024 Projet Akinator
+    </footer>
+</body>
+</html>
