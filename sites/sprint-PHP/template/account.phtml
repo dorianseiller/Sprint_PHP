@@ -1,0 +1,80 @@
+<div class="account-header">
+    <h1 class="account-title">
+        <?= htmlspecialchars($user['username']) ?>
+    </h1>
+</div>
+
+<div class="account-container">
+
+    <?php if ($message): ?>
+        <div class="alert alert-success">
+            <?= htmlspecialchars($message) ?>
+        </div>
+    <?php endif; ?>
+    
+    <?php if ($error): ?>
+        <div class="alert alert-error">
+            <?= htmlspecialchars($error) ?>
+        </div>
+    <?php endif; ?>
+
+    <h3 class="section-title">Historique des parties</h3>
+    
+    <div class="history-list">
+        <?php if (empty($games)): ?>
+            <p class="empty-history">Aucune partie jouée pour le moment.</p>
+        <?php else: ?>
+            <table class="history-table">
+                <?php foreach ($games as $game): ?>
+                    <tr>
+                        <td class="history-date">
+                            Le <?= date('d/m/Y', strtotime($game['game_date'])) ?>
+                        </td>
+                        <td class="history-char">
+                            <?= htmlspecialchars($game['name'] ?? 'Inconnu') ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
+    </div>
+
+    <hr class="separator">
+
+    <h3 class="section-title">Changer mon mot de passe</h3>
+    
+    <p class="password-note">
+        Votre mot de passe doit contenir au moins 8 caractères, une majuscule et un caractère spécial.
+    </p>
+
+    <form method="POST" class="form-account">
+        <input type="hidden" name="action" value="change_password">
+        
+        <div class="form-group">
+            <label for="current_password" class="form-label">Mot de passe actuel</label>
+            <input id="current_password" name="current_password" type="password" required class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label for="new_password" class="form-label">Nouveau mot de passe</label>
+            <input id="new_password" name="new_password" type="password" required class="form-input">
+        </div>
+
+        <button type="submit" class="btn-submit">
+            Changer de mot de passe
+        </button>
+    </form>
+
+    <hr class="separator">
+
+    <div class="delete-section">
+        <h3 class="section-title">Supprimer mon compte</h3>
+        
+        <form method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte définitivement ? Cela effacera tout votre historique.');">
+            <input type="hidden" name="action" value="delete_account">
+            <button type="submit" class="btn-submit btn-danger">
+                Supprimer le compte
+            </button>
+        </form>
+    </div>
+</div>
