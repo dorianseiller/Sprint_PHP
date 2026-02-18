@@ -1,0 +1,14 @@
+<h1>Résultat</h1>
+
+<div class="result-container" style="text-align:center;">
+    <p>Je pense à...</p>
+    <h2><?= htmlspecialchars($character['name']) ?></h2>
+    
+    <?php if(!empty($character['image_url'])): ?>
+        <img src="<?= htmlspecialchars($character['image_url']) ?>" alt="Perso" style="max-width:200px; margin: 1rem 0;">
+    <?php endif; ?>
+    
+    <p><?= htmlspecialchars($character['description']) ?></p>
+    
+    <a href="index.php" class="btn">Rejouer</a>
+</div>
