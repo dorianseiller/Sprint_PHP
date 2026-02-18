@@ -1,0 +1,18 @@
+<h1>Question</h1>
+
+<div class="form-container">
+    <h2 class="quiz-title">
+        <?= htmlspecialchars($question['text_content']) ?>
+    </h2>
+
+    <form method="POST" class="quiz-form-buttons">
+        <button type="submit" name="answer" value="yes" class="btn btn-yes">Oui</button>
+        <button type="submit" name="answer" value="no" class="btn btn-no">Non</button>
+    </form>
+
+    <div class="reset-link-container">
+        <a href="quiz.php?reset=1" class="reset-link">
+            Recommencer le quiz
+        </a>
+    </div>
+</div>
